@@ -19,9 +19,9 @@ app.get("/scrape", function(req, res) {
             var result = {};
 
             result.title = $(element).text();
-            // result.link = $(element)
-            // .children("a")
-            // .attr("href");
+            result.link = $(element)
+            .parent("a")
+            .attr("href");
    
             db.Article.create(result)
             .then(function(dbArticle){
