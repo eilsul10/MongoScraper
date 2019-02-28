@@ -1,9 +1,8 @@
 // Set up dependencies
 var express = require("express");
 var mongoose = require("mongoose");
-var cheerio = require("cheerio");
-var express = require("express");
-var axios = require("axios");
+// var cheerio = require("cheerio");
+// var axios = require("axios");
 
 // Set up port
 var PORT = 3000;
