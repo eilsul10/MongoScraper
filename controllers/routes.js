@@ -18,12 +18,10 @@ app.get("/scrape", function(req, res) {
         $("div.card__headline__text").each(function(i, element) {
             var result = {};
 
-            result.title = $(element)
-            .children("a")
-            .text();
-            result.link = $(element)
-            .children("a")
-            .attr("href");
+            result.title = $(element).text();
+            // result.link = $(element)
+            // .children("a")
+            // .attr("href");
    
             db.Article.create(result)
             .then(function(dbArticle){
