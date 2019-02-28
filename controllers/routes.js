@@ -12,16 +12,16 @@ var db = require("../models");
 // A GET route for scraping the HuffPost website
 
 app.get("/scrape", function(req, res) {
-    axios.get("https://www.huffingtonpost.com/").then(function(response){
+    axios.get("http://www.huffingtonpost.com/").then(function(response){
         var $ = cheerio.load(response.data);
 
-        $("card__headline__text").each(function(i, element) {
+        $("div.card__headline__text").each(function(i, element) {
             var result = {};
 
-            result.title = $(this)
+            result.title = $(element)
             .children("a")
             .text();
-            result.link = $(this)
+            result.link = $(element)
             .children("a")
             .attr("href");
    
