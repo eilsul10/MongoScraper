@@ -2,9 +2,7 @@
 var axios = require("axios");
 var cheerio = require("cheerio");
 var express = require("express");
-
 var app = express.Router();
-
 var db = require("../models");
 
 // Routes
@@ -32,8 +30,9 @@ app.get("/scrape", function (req, res) {
         });
     });
 
-    // Send message to client
-    res.send("Scrape Complete..<a href='/'>Home Page</a>");
+    res.render("scrape");
+    // // Send message to client
+    // res.send("Scrape Complete..<a href='/'>Home Page</a>");
   });
 });
 
@@ -53,6 +52,28 @@ app.get("/", function (req, res) {
       res.json(err);
     });
 });
+
+
+// router.get('/save/:id', (req,res) => {
+//   db.Article
+//     .update({_id: req.params.id},{saved: true})
+//     .then(result=> res.redirect('/'))
+//     .catch(err => res.json(err));
+// });
+
+// // Route for 
+
+// // Route for saving Articles
+// app.get("/savedArticles", function (req, res){
+//   db.Article.find({})
+//     .then(function (data) {
+//       res.render('')
+//     })
+
+
+//   .then(result => res.render('savedArticles', {articles:result}))
+//     .catch(err => res.json(err));
+// });
 
 
 // Route for deleting a note
@@ -122,7 +143,5 @@ app.post("/articles/:id", function (req, res) {
       res.json(err);
     });
 });
-
-// Do I need to connect this to a unique ID of the visitor?
 
 module.exports = app;
