@@ -130,3 +130,16 @@ $(document).on('click', '#saveArticle', function () {
   });
 });
 
+// On click to clear all articles
+$(document).on('click', '#allClear', function () {
+  $.ajax({
+    // method: "GET",
+    url: '/articles',
+    type: 'DELETE',
+    success: function (response) {
+      window.location.href = '/';
+    },
+  });
+});
+
+

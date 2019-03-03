@@ -80,6 +80,14 @@ app.delete("/articles/:id", function (req, res) {
   });
 });
 
+// Route for deleting all articles
+
+app.delete("/articles", function (req, res){
+  db.Article.remove({})
+  .then(function (data){
+    res.redirect('/')});
+})
+
 // Route for retrieving all Article from the db
 app.get("/articles", function (req, res) {
   // Grab every document in the Articles collection
