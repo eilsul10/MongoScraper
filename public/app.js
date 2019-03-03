@@ -1,23 +1,14 @@
-$.getJSON("/articles", function (data) {
-    // For each one
-    for (var i = 0; i < 20; i++) {
-     // Display the appropriate information on the page
-     $("#populate").append("<button data-id='" + data[i]._id + "' class='deletebtn'>X</button><p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-    }
-   });
-   
-   
-   // Whenever someone clicks a p tag
+// Whenever someone clicks a h2 tag
 $(document).on("click", "h2", function () {
 
-  $(document).ready(function(){
+  $(document).ready(function () {
     $('.modal').modal();
-    $('.modal').modal('open'); 
+    $('.modal').modal('open');
   });
 
   // var instance = M.Modal.getInstance(elem);
   // instance.open(elem);
-          
+
   //alert("hi");
   // Empty the modal-content from the note section
   $("#modal-content").empty();
@@ -82,8 +73,8 @@ $(document).on("click", "#savenote", function () {
 
 
 
-// When you click the savenote button
-$(document).on("click", ".deletebtn", function () {
+// When you click the delete article button
+$(document).on("click", "#deletebtn", function () {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
 
@@ -97,43 +88,45 @@ $(document).on("click", ".deletebtn", function () {
     .then(function (data) {
       location.reload();
 
-      
+
     });
 
   // Also, remove the values entered in the input and textarea for note entry
   $("#titleinput").val("");
   $("#bodyinput").val("");
 });
- 
 
 
-  //  Clear all articles
-   $(document).on("click", "#delete-articles", function () {
-    // Grab the id associated with the article from the submit button
-    var thisId = $(this).attr("data-id");
-  
-    // Run a POST request to change the note, using what's entered in the inputs
-    $.ajax({
-      method: "DELETE",
-      url: "/articles/" + thisId
-    })
-      // With that done
-      .then(function (data) {
-        // Log the response
-        console.log(data);
-        location.reload();
-      });
+
+//  Clear all articles
+$(document).on("click", "#delete-articles", function () {
+  // Grab the id associated with the article from the submit button
+  var thisId = $(this).attr("data-id");
+
+  // Run a POST request to change the note, using what's entered in the inputs
+  $.ajax({
+    method: "DELETE",
+    url: "/articles/" + thisId
+  })
+    // With that done
+    .then(function (data) {
+      // Log the response
+      console.log(data);
+      location.reload();
     });
+});
 
-    $(document).on('click', '#saveArticle', function (articles) {
-      let articleId = $(this).data('id');
-      $.ajax({
-        url: '/savedArticles'+ articleId,
-        type: 'GET',
-        success: function (response) {
-          window.location.href = '/';
-        },
-      });
-    });
-          
-  
+// On click to save article
+
+$(document).on('click', '#saveArticle', function () {
+  var thisId = $(this).attr('data-id');
+  $.ajax({
+    // method: "GET",
+    url: '/articles/save/' + thisId,
+    type: 'GET',
+    success: function (response) {
+      window.location.href = '/';
+    },
+  });
+});
+

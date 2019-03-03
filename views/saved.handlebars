@@ -8,28 +8,19 @@
 </nav>
 
 
-
-  {{!-- <div class="row">
-    <div class="col s12 teal lighten-2">
-        <table id= "populate"></table>
-      </div>
-  </div> --}}
-
-  {{!-- <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" href="#modal1">Modal</a> --}}
-
 {{#each hbsObject}}
-{{#unless saved}}
+{{#if saved}}
 
 {{#each this}}
 <div class="row">
   <div class="col s12 teal lighten-2">
 <h2>{{title}}</h2>
 <h2>{{link}}</h2>
-<a class="waves-effect waves-light btn" id="saveArticle">Save Article</a>
+<a class="waves-effect waves-light btn" id="saveArticle"  data-id="{{_id}}">Save Article</a>
 </div>
 </div>
 {{/each}}
-{{/unless}}
+{{/if}}
 {{/each}}
 
 

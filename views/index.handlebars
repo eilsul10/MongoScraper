@@ -3,35 +3,27 @@
     <a href="#" class="brand-logo">HuffPost Scraper</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="/scrape">Start Scraping</a></li>
-      <li><a href="/savedArticles">Saved Articles</a></li>
+      <li><a href="/saved" id="viewSaved">Saved Articles</a></li>
     </ul>
   </div>
 </nav>
 
-
-
-{{!-- <div class="row">
-    <div class="col s12 teal lighten-2">
-        <table id= "populate"></table>
-      </div>
-  </div> --}}
-
+<div class="container"><center>Click on the title to add a note! Click on the 'X' to delete.</center></div>
 {{#each hbsObject}}
 {{#unless saved}}
-
 {{#each this}}
 <div class="row">
   <div class="col s12 teal lighten-2">
-<h2>{{title}}</h2>
-<h2>{{link}}</h2>
-<a class="waves-effect waves-light btn" id="saveArticle">Save Article</a>
+    <a class="waves-effect waves-light btn-small" id="deletebtn" data-id="{{_id}}">X</a>
+<h3>{{title}}</h3>
+<h5>{{link}}</h5>
+<a class="waves-effect waves-light btn-small" id="saveArticle" data-id="{{_id}}">Save Article</a>
+<br><br>
 </div>
 </div>
 {{/each}}
 {{/unless}}
 {{/each}}
-
-{{!-- <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" href="#modal1">Modal</a> --}}
 
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
@@ -46,4 +38,3 @@
   </div>
 </div>
 
-{{!-- <div id="notes"></div> --}}

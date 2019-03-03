@@ -18,8 +18,7 @@ app.get("/scrape", function (req, res) {
 
       result.title = $(element).text();
       result.link = $(element).parent("a").attr("href");
-      // result.summary=$(element).parent("card__image js-card-image");
-      // result.image =$(element).children("img.card__img__src").attr();
+      // result.image = $(element).siblings("div.card__image__wrapper").children("div.card__image").children("img").attr("card__image__src");
 
       db.Article.create(result)
         .then(function (dbArticle) {
@@ -31,8 +30,7 @@ app.get("/scrape", function (req, res) {
     });
 
     res.render("scrape");
-    // // Send message to client
-    // res.send("Scrape Complete..<a href='/'>Home Page</a>");
+  
   });
 });
 
@@ -57,22 +55,18 @@ app.get("/", function (req, res) {
 
 // Route for identifying saved articles
 app.get('/save/:id', (req,res) => {
-  db.Article
-    .update({_id: req.params.id},{saved: true})
-    .then(result=> res.redirect('/'))
-    .catch(err => res.json(err));
+  db.Article.update({_id: req.params.id},{saved: true})
+    .then(function (data){
+      res.redirect('/')});
 });
 
 // Route for saving Articles
-app.get("/savedArticles", function (req, res){
+app.get("/saved", function (req, res){
   db.Article.find({})
-    // .then(function (data) {
-    //   res.render("saved", {articles:result} )
-    // })
-    .then(result => res.render('saved', {articles:data}))
-    .catch(err => res.json(err));
+    .then(function (data){
+      res.render('saved', {hbsObject:result})
+    });
 });
-
 
 // Route for deleting a note
 app.delete("/articles/:id", function (req, res) {
