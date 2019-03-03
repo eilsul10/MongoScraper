@@ -8,7 +8,7 @@ $.getJSON("/articles", function (data) {
    
    
    // Whenever someone clicks a p tag
-$(document).on("click", "p", function () {
+$(document).on("click", "h2", function () {
 
   $(document).ready(function(){
     $('.modal').modal();
