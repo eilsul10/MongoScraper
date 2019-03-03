@@ -61,10 +61,11 @@ app.get('/save/:id', (req,res) => {
 });
 
 // Route for saving Articles
-app.get("/saved", function (req, res){
-  db.Article.find({})
+app.get("/savedArticles", function (req, res){
+  db.Article.find({saved: true})
     .then(function (data){
-      res.render('saved', {hbsObject:result})
+      res.json(data);
+      res.render("saved");
     });
 });
 

@@ -122,7 +122,7 @@ $(document).on('click', '#saveArticle', function () {
   var thisId = $(this).attr('data-id');
   $.ajax({
     // method: "GET",
-    url: '/articles/save/' + thisId,
+    url: '/save/' + thisId,
     type: 'GET',
     success: function (response) {
       window.location.href = '/';
