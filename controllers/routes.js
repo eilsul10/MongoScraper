@@ -7,6 +7,8 @@ var db = require("../models");
 
 // Routes
 
+// Referenced Week 18, Activity 20
+
 // A GET route for scraping the HuffPost website
 
 app.get("/scrape", function (req, res) {

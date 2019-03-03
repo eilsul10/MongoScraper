@@ -1,3 +1,5 @@
+// Referenced Week 18, Activity 20
+
 // Whenever someone clicks a h3 tag
 $(document).on("click", "h3", function () {
 
