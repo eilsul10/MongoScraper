@@ -5,7 +5,11 @@ var mongoose = require("mongoose");
 // var axios = require("axios");
 
 // Set up port
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(MONGODB_URI);
 
 // Require all models
 var db = require("./models");
