@@ -64,8 +64,7 @@ app.get('/save/:id', (req,res) => {
 app.get("/savedArticles", function (req, res){
   db.Article.find({saved: true})
     .then(function (data){
-      res.json(data);
-      res.render("saved");
+      res.render("saved", {data});
     });
 });
 

@@ -8,10 +8,10 @@
 </nav>
 
 
-{{#each hbsObject}}
+{{#each data}}
 {{#if saved}}
 
-{{#each this}}
+{{!-- {{#each this}} --}}
 <div class="row">
   <div class="col s12 teal lighten-2">
 <h2>{{title}}</h2>
@@ -19,7 +19,7 @@
 {{!-- <a class="waves-effect waves-light btn" id="saveArticle"  data-id="{{_id}}">Save Article</a> --}}
 </div>
 </div>
-{{/each}}
+{{!-- {{/each}} --}}
 {{/if}}
 {{/each}}
 
