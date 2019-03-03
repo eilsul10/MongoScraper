@@ -125,8 +125,15 @@ $(document).on("click", ".deletebtn", function () {
       });
     });
 
-    // $(document).ready(function(){
-    //   $('.modal').modal();
-    // });
+    $(document).on('click', '#saveArticle', function (articles) {
+      let articleId = $(this).data('id');
+      $.ajax({
+        url: '/savedArticles'+ articleId,
+        type: 'GET',
+        success: function (response) {
+          window.location.href = '/';
+        },
+      });
+    });
           
   

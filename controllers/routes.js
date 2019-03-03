@@ -45,7 +45,8 @@ app.get("/", function (req, res) {
         scrapes: data
       };
       console.log(hbsObject);
-      res.render("index", hbsObject);
+      res.render("index", {hbsObject});
+
     })
     .catch(function (err) {
       // If an error occurred, send it to the client
@@ -54,26 +55,23 @@ app.get("/", function (req, res) {
 });
 
 
-// router.get('/save/:id', (req,res) => {
-//   db.Article
-//     .update({_id: req.params.id},{saved: true})
-//     .then(result=> res.redirect('/'))
-//     .catch(err => res.json(err));
-// });
+// Route for identifying saved articles
+app.get('/save/:id', (req,res) => {
+  db.Article
+    .update({_id: req.params.id},{saved: true})
+    .then(result=> res.redirect('/'))
+    .catch(err => res.json(err));
+});
 
-// // Route for 
-
-// // Route for saving Articles
-// app.get("/savedArticles", function (req, res){
-//   db.Article.find({})
-//     .then(function (data) {
-//       res.render('')
-//     })
-
-
-//   .then(result => res.render('savedArticles', {articles:result}))
-//     .catch(err => res.json(err));
-// });
+// Route for saving Articles
+app.get("/savedArticles", function (req, res){
+  db.Article.find({})
+    // .then(function (data) {
+    //   res.render("saved", {articles:result} )
+    // })
+    .then(result => res.render('saved', {articles:data}))
+    .catch(err => res.json(err));
+});
 
 
 // Route for deleting a note
@@ -87,12 +85,6 @@ app.delete("/articles/:id", function (req, res) {
       res.json({ message: 'Note Deleted!' });
   });
 });
-
-// Route for deleting articles
-
-// app.delete("/articles/:id", function (req, res) {
-//   db.Article.drop()
-// });
 
 // Route for retrieving all Article from the db
 app.get("/articles", function (req, res) {
