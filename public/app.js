@@ -1,5 +1,5 @@
-// Whenever someone clicks a h2 tag
-$(document).on("click", "h2", function () {
+// Whenever someone clicks a h3 tag
+$(document).on("click", "h3", function () {
 
   $(document).ready(function () {
     $('.modal').modal();
